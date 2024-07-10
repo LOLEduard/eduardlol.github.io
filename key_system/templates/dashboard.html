@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Key Dashboard</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>IP</th>
+                <th>Created At</th>
+                <th>Expiration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ip, data in keys.items() %}
+            <tr>
+                <td>{{ data.key }}</td>
+                <td>{{ ip }}</td>
+                <td>{{ data.created_at }}</td>
+                <td>{{ data.expiration }}</td>
+                <td>
+                    <form action="{{ url_for('delete_key', ip=ip) }}" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <a href="{{ url_for('edit_key', ip=ip) }}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

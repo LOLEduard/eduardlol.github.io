@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Key</title>
+</head>
+<body>
+    <h1>Edit Key for IP: {{ ip }}</h1>
+    <form method="POST" action="{{ url_for('edit_key', ip=ip) }}">
+        <label for="key">New Key:</label>
+        <input type="text" id="key" name="key" value="{{ key_data.key }}" required>
+        <br>
+        <label for="expiration">New Expiration:</label>
+        <input type="datetime-local" id="expiration" name="expiration" value="{{ key_data.expiration }}" required>
+        <br>
+        <input type="hidden" name="owner_key" value="{{ session['authenticated'] }}">
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

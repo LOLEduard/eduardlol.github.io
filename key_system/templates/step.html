@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Step {{ step }}</title>
+</head>
+<body>
+    <h2>Step {{ step }}</h2>
+    <p>Complete this step to continue.</p>
+    <a href="{{ url_for('ad_interaction', step=step) }}" class="button">Continue</a>
+</body>
+</html>
